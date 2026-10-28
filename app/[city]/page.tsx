@@ -196,13 +196,13 @@ export default function CityPage({ params }: { params: { city: string } }) {
             <div className="col-sm-6">
               <h3 className="mb-25">Ванна спустя <span style={{ color: '#5A9BD1' }}>1 год</span></h3>
               <div className="video">
-                <iframe src="https://rutube.ru/play/embed/b30179689b71f408c6c272d547916ade" allow="clipboard-write; autoplay" allowFullScreen title="Ванна спустя 1 год" />
+                <iframe src="https://rutube.ru/play/embed/aba6f5fb94d30a964449a358b6e949bf" allow="clipboard-write; autoplay" allowFullScreen title="Ванна спустя 1 год" />
               </div>
             </div>
             <div className="col-sm-6">
               <h3 className="mb-25">Весь процесс <span style={{ color: '#5A9BD1' }}>за 10 минут</span></h3>
               <div className="video">
-                <iframe src="https://rutube.ru/play/embed/b466f124329d2d5027b5527dc6d56033" allow="clipboard-write; autoplay" allowFullScreen title="Весь процесс за 10 минут" />
+                <iframe src="https://rutube.ru/play/embed/506c06ef186de8d82cad72c5a5978a7f" allow="clipboard-write; autoplay" allowFullScreen title="Весь процесс за 10 минут" />
               </div>
             </div>
           </div>
