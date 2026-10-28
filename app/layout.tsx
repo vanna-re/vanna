@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     siteName: 'Реставрация ванн в Ленинградской области',
     images: ['https://rest-vanna.ru/0files/img/12.jpg'],
   },
+  verification: {
+    yandex: '66f97a8741a32c7e',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
