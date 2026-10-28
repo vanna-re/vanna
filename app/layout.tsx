@@ -3,6 +3,7 @@ import Script from 'next/script';
 import './globals.css';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kingisepp.rest-vanna.ru';
+const YM_ID = 113845266;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -27,10 +28,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://rest-vanna.ru" />
+        <link rel="preconnect" href="https://mc.yandex.ru" />
       </head>
       <body>
         {children}
 
+        {/* ===== Google Analytics 4 ===== */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-CDNZBKTGSN"
           strategy="afterInteractive"
@@ -43,16 +46,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-CDNZBKTGSN');
           `}
         </Script>
+
+        {/* ===== Yandex.Metrika counter ===== */}
         <Script id="ym-counter" strategy="afterInteractive">
           {`
-            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-            ym(97445008, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+            (function(m,e,t,r,i,k,a){
+                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                m[i].l=1*new Date();
+                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+            })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=${YM_ID}', 'ym');
+
+            ym(${YM_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
           `}
         </Script>
+        <noscript>
+          <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://mc.yandex.ru/watch/${YM_ID}`}
+              style={{ position: 'absolute', left: '-9999px' }}
+              alt=""
+            />
+          </div>
+        </noscript>
+        {/* ===== /Yandex.Metrika counter ===== */}
       </body>
     </html>
   );
